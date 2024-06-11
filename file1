@@ -1,0 +1,13 @@
+dynamodb vs casandra
+2-In Amazon DynamoDB, "scan" and "query" are two different operations used to retrieve data from a table
+Scan-usually slow
+Purpose: Retrieves all items in a table 
+Operation: Scans the entire table and returns all data attributes by default.
+Performance: Less efficient because it examines every item in the table. Consumes more read capacity units (RCUs).
+Filtering: You can apply a filter expression to narrow down the results, but the filter is applied only after the data is retrieved, which means the scan still reads all items.
+Use Cases: Useful when you need to retrieve all items from a table or secondary index, or if you don’t know the partition key of the items you're retrieving.
+Query-
+ses the primary key (partition key and optionally sort key) to retrieve items. Only reads items that match the specified primary key.
+Performance: More efficient than scan because it only looks at items that match the specified key. Consumes fewer RCUs.
+Filtering: You can apply a filter expression to narrow down the results further, but it operates on items that have already matched the key condition.
+Use Cases: Best when you know the partition key and optionally the sort key. Useful for retrieving items that share the same partition key
